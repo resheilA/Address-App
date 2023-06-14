@@ -1,0 +1,535 @@
+<object>
+	<Main>
+		<Edit>
+			<english>Edit</english>
+			<hindi>अपडेट</hindi>
+		</Edit>
+		<Delete>
+			<english>Delete</english>
+			<hindi>हटा दें</hindi>
+		</Delete>
+		<New>
+			<english>New</english>
+			<hindi>नया</hindi>
+		</New>
+		<Download>
+			<english>Download</english>
+		</Download>
+		<Upload>
+			<english>Upload</english>
+		</Upload>
+		<Save>
+			<english>Save</english>
+			<hindi>सहेजें</hindi>
+		</Save>
+		<All>
+			<english>All</english>
+			<hindi>सभी</hindi>
+		</All>
+		<AddaNew>
+			<english>Add a new</english>
+			<hindi>नया जोड़ें</hindi>
+		</AddaNew>
+		<Total>
+			<english>Total</english>
+			<hindi>कुल</hindi>
+		</Total>
+		<Deleted>
+			<english>deleted</english>
+			<hindi>हटाए गए ।</hindi>
+		</Deleted>
+		<notifysuccess>
+			<english>Your changes have been saved.</english>
+			<hindi>आपके परिवर्तन सफलतापूर्वक सहेजे गए हैं ।</hindi>	
+		</notifysuccess>
+		<errornotfound>
+			<english>not found</english>
+			<hindi>नहीं मिला ।</hindi>
+		</errornotfound>
+		<errorexist>
+			<english>already exist in system.</english>
+			<hindi>सिस्टम में पहले से मौजूद है ।</hindi>
+		</errorexist>
+		<dashboard>
+			<english>Dashboard</english>
+		</dashboard>
+		<login>
+			<english>Login</english>
+		</login>
+		</Main>
+		
+		
+		
+	<User>
+		<objname>
+			<english>User</english>
+			<hindi>ग्राहक</hindi>
+		</objname>	
+		<mhead_Contact>
+			<english>Contact Number</english>
+			<hindi>ग्राहक</hindi>
+			<spanish>cliente</spanish>
+		</mhead_Contact>
+		<mhead_Username>
+			<english>Username</english>
+			<hindi>ग्राहक</hindi>
+			<spanish>cliente</spanish>
+		</mhead_Username>		
+		<mhead_Fullname>
+			<english>Name</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+			<spanish>Número de contacto</spanish>
+		</mhead_Fullname>		
+		<fullname>
+			<english>Enter full Name</english>
+			<hindi>ग्राहक का नाम दर्ज करेंं</hindi>
+		</fullname>
+		<contact>
+			<english>Contact Number</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</contact>		
+		<id>
+			<english>Record id</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</id>			
+		<uni_code>
+			<english>Unique Code</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</uni_code>			
+		<username>
+			<english>Email</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</username>	
+		<userpassword>
+			<english>Password</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</userpassword>	
+		<usercompany>
+			<english>Company</english>
+		</usercompany>	
+		<user_block>
+			<english>Block / Unblock</english>
+		</user_block>
+	</User>	
+	
+	
+	<Payout>
+		<objname>
+			<english>Payout</english>			
+		</objname>	
+		<mhead_Payoutrider>
+			<english>Rider</english>			
+		</mhead_Payoutrider>			
+		<mhead_Payoutaddedon>
+			<english>Added on</english>			
+		</mhead_Payoutaddedon>			
+		<mhead_Payoutstatus>
+			<english>Status</english>			
+		</mhead_Payoutstatus>			
+		<mhead_Payoutamt>
+			<english>Amount (in Rs)</english>			
+		</mhead_Payoutamt>			
+		<id>
+			<english>Id</english>		
+		</id>	
+		<payoutid>
+			<english>Payout Id</english>		
+		</payoutid>	
+		<payoutrider>
+			<english>Rider</english>		
+		</payoutrider>			
+		<payoutcompany>
+			<english>Company</english>		
+		</payoutcompany>			
+		<payoutamt>
+			<english>Amount</english>		
+		</payoutamt>			
+		<payoutdescription>
+			<english>Payout Description</english>		
+		</payoutdescription>
+		<payoutstatus>
+			<english>Payout Status</english>
+		</payoutstatus>	
+		<payoutaddedon>
+			<english>Payout Date</english>
+		</payoutaddedon>	
+	</Payout>
+	
+	
+	
+	<Paymentmode>
+		<objname>
+			<english>Payment Mode</english>			
+		</objname>	
+		<mhead_Paymentmodename>
+			<english>Payment Mode</english>			
+		</mhead_Paymentmodename>			
+		<id>
+			<english>Id</english>		
+		</id>	
+		<paymentmodename>
+			<english>Paymentmode Name</english>		
+		</paymentmodename>			
+	</Paymentmode>
+	
+	<Flag>
+		<objname>
+			<english>Flag</english>			
+		</objname>	
+		<mhead_Flagname>
+			<english>Flag Name</english>			
+		</mhead_Flagname>			
+		<mhead_Flagvalue>
+			<english>Flag Value</english>			
+		</mhead_Flagvalue>	
+		<id>
+			<english>Id</english>		
+		</id>	
+		<flagname>
+			<english>Flag Name</english>		
+		</flagname>			
+		<flagvalue>
+			<english>Flag Value</english>		
+		</flagvalue>	
+	</Flag>
+	
+	<Campaign>
+		<objname>
+			<english>Campaign</english>			
+		</objname>	
+		<mhead_Campaignname>
+			<english>Campaign Name</english>			
+		</mhead_Campaignname>			
+		<mhead_Id>
+			<english>Id</english>			
+		</mhead_Id>	
+		<id>
+			<english>Id</english>		
+		</id>	
+		<campaignname>
+			<english>Campaign Name</english>		
+		</campaignname>			
+		<campaigncompany>
+			<english>Campaign Company</english>		
+		</campaigncompany>
+		<campaigndescription>
+			<english>Campaign Description</english>		
+		</campaigndescription>		
+	</Campaign>
+	
+	
+	<Company>
+		<objname>
+			<english>Company</english>
+			<hindi>ग्राहक</hindi>
+		</objname>	
+		<mhead_Companyname>
+			<english>Company</english>
+			<hindi>ग्राहक</hindi>
+			<spanish>cliente</spanish>
+		</mhead_Companyname>	
+		<mhead_Companycontact>
+			<english>Contact Number</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+			<spanish>Número de contacto</spanish>
+		</mhead_Companycontact>		
+		<companyname>
+			<english>Enter Name of Company</english>
+			<hindi>ग्राहक का नाम दर्ज करेंं</hindi>
+		</companyname>
+		<companycontact>
+			<english>Contact Number of the Company.</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</companycontact>		
+		<companyaddress>
+			<english>Address of the Company.</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</companyaddress>		
+		<gstno>
+			<english>GST Number of the Company.</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</gstno>	
+		<logo>
+			<english>Logo</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</logo>	
+		<id>
+			<english>Record id</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</id>
+		<companycoi>
+			<english>COI</english>
+		</companycoi>
+		<companypan>
+			<english>Company PAN</english>
+		</companypan>
+		<companygst>
+			<english>GST Certificate</english>
+		</companygst>
+		<companydirectordoc>
+			<english>Prop / Director PAN / ADHAR</english>
+		</companydirectordoc>
+		<companycode>
+			<english>Unique Code</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</companycode>			
+		<adminusername>
+			<english>Admin's Email</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</adminusername>	
+		<adminpassword>
+			<english>Admin's Password</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</adminpassword>	
+		<company_block>
+			<english>Block / Unblock</english>
+		</company_block>
+		<cashfreeapikey>
+			<english>Cashfree API Key</english>
+		</cashfreeapikey>
+		<cashfreeapipass>
+			<english>Cashfree API Pass</english>
+		</cashfreeapipass>
+	</Company>	
+
+
+
+	<Riders>
+		<objname>
+			<english>Riders</english>		
+		</objname>	
+		<mhead_Ridername>
+			<english>Name</english>
+		</mhead_Ridername>
+		<mhead_Ridercontactnumber>
+			<english>Contact Number</english>
+		</mhead_Ridercontactnumber>
+		<mhead_Ridercompany>
+			<english>Company</english>
+		</mhead_Ridercompany>
+		<ridername>
+			<english>Name of the Rider</english>
+			<hindi></hindi>
+		</ridername>	
+		<rideraddress>
+			<english>Rider's Address </english>
+			<hindi></hindi>
+		</rideraddress>	
+		<ridercontactnumber>
+			<english>Mobile Number (Used for logging in) </english>
+			<hindi></hindi>
+		</ridercontactnumber>		
+		<ridercompany>
+			<english>The company you ride for </english>
+			<hindi></hindi>
+		</ridercompany>	
+		<riderage>
+			<english>Your Birthday</english>
+			<hindi></hindi>
+		</riderage>	
+		<rideraadharcard>
+			<english>Aadharcard Picture</english>
+			<hindi></hindi>
+		</rideraadharcard>
+		<riderpancard>
+			<english>Pancard Picture</english>
+			<hindi></hindi>
+		</riderpancard>
+		<riderdra>
+			<english>DRA Picture</english>
+			<hindi></hindi>
+		</riderdra>
+		<riderpcc>
+			<english>PCC Picture</english>
+			<hindi></hindi>
+		</riderpcc>
+		<riderresidence>
+			<english>Residence Proof Picture</english>
+			<hindi></hindi>
+		</riderresidence>
+		<riderprofilepic>
+			<english>Rider's Picture</english>
+			<hindi></hindi>
+		</riderprofilepic>
+		<riderdrivinglicense>
+			<english>Driving License Picture</english>
+			<hindi></hindi>
+		</riderdrivinglicense>	
+		<bankaccno>
+			<english>Bank Account Number</english>
+			<hindi></hindi>
+		</bankaccno>	
+		<bankifsc>
+			<english>Bank IFSC Code</english>
+			<hindi></hindi>
+		</bankifsc>	
+		<riderbeneid>
+			<english>Beneficiary ID</english>
+			<hindi></hindi>
+		</riderbeneid>	
+		<ridercode>
+			<english>Rider ID</english>
+			<hindi></hindi>
+		</ridercode>			
+		<id>
+			<english>Record id</english>
+			<hindi></hindi>
+		</id>			
+		<uni_code>
+			<english>Unique Code</english>
+			<hindi></hindi>
+		</uni_code>			
+		<password>
+			<english>Login Password</english>
+			<hindi>गसंपर्क नंबरं</hindi>
+		</password>	
+		<rider_block>
+			<english>Block / Unblock</english>
+		</rider_block>
+	</Riders>	
+
+	<Customer>
+		<objname>
+			<english>Customer</english>
+			<hindi></hindi>
+		</objname>
+		<id>	
+			<english>System Identifier</english>
+		</id>
+		<customername>
+			<english>Name of the Customer</english>
+			<hindi></hindi>
+		</customername>
+		<customercontactnumber>
+			<english>Customer's Contact Number</english>
+			<hindi></hindi>
+		</customercontactnumber>
+		<cuscost> 
+			<english>Cost Of Visit (In Rupees)</english>
+			<hindi></hindi>
+		</cuscost> 
+		<customeremail> 
+			<english>Customer's Email</english>
+			<hindi></hindi>
+		</customeremail> 
+		<cyc>
+			<english>Cycle</english>
+			<hindi></hindi>
+		</cyc>
+		<pos>
+			<english>POS</english>
+		</pos>
+		<tpd>
+			<english>TPD/EMI</english>
+		</tpd>
+		<tad>
+			<english>TAD/NOM</english>
+		</tad>
+		<status>
+			<english>Status</english>
+			<hindi></hindi>
+		</status>
+		<cushomeaddress>
+			<english>Home Address Address</english>
+			<hindi></hindi>
+		</cushomeaddress>
+		<cushomepincode>
+			<english>Home Address Pincode</english>
+			<hindi></hindi>
+		</cushomepincode>
+		<cushomelangitude>	
+			<english>Home Address Langitude</english>
+			<hindi></hindi>
+		</cushomelangitude>	
+		<cushomelongitude>
+			<english>Home Address Longitude</english>
+			<hindi></hindi>
+		</cushomelongitude>
+		<cusofficeaddress>
+			<english>Office Address Address</english>
+			<hindi></hindi>
+		</cusofficeaddress>
+		<cusofficepincode>
+			<english>Office Address Pincode</english>
+			<hindi></hindi>
+		</cusofficepincode>
+		<cusofficelangitude>	
+			<english>Office Address Langitude</english>
+			<hindi></hindi>
+		</cusofficelangitude>	
+		<cusofficelongitude>
+			<english>Office Address Longitude</english>
+			<hindi></hindi>
+		</cusofficelongitude>
+		<customernote>
+			<english>Addition Note</english>
+			<hindi></hindi>
+		</customernote>		
+		<cusarea>
+			<english>Area</english>
+		</cusarea>
+		<uni_code>
+			<english>Unique Code</english>
+			<hindi></hindi>
+		</uni_code>	
+		<assigned_to>
+			<english>Assigned To</english>
+			<hindi></hindi>
+		</assigned_to>
+		<added_on>
+			<english>Added On</english>
+			<hindi></hindi>
+		</added_on>
+		<customer_block>
+			<english>Block / Unblock</english>
+		</customer_block>
+		<assigned_company>
+			<english>Company</english>
+		</assigned_company>
+		<customercampaign>
+			<english>Campaign</english>	
+		</customercampaign>
+	</Customer>	
+	
+	<Customerstatus>
+		<objname>
+		<english>Customer Status</english>
+		</objname>
+		<id>
+			<english>System Id</english>
+		</id>
+		<latitude>
+			<english>Latitude</english>
+		</latitude>
+		<longitude>
+			<english>Longitude</english>
+		</longitude>
+		<visitpicture1>
+			<english>Visit Picture 1</english>
+		</visitpicture1>
+		<visitpicture2>
+			<english>Visit Picture 2</english>
+		</visitpicture2>
+		<visitpicture3>
+			<english>Visit Picture 3</english>
+		</visitpicture3>
+		<collectedamount>
+			<english>Collected Amount</english>
+		</collectedamount>
+		<code>
+			<english>Code</english>
+		</code>
+		<remarks>
+			<english>Remark</english>
+		</remarks>
+		<customer>
+			<english>Customer</english>
+		</customer>
+		<cin>
+			<english>CIN</english>
+		</cin>
+		<statuscompany>
+			<english>Company</english>
+		</statuscompany>
+	</Customerstatus>
+</object>

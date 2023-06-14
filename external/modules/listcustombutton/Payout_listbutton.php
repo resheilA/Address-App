@@ -1,0 +1,1 @@
+<?php /* <td><a href='Company.php?action=editCustomer&amp;CustomerId=1' '=''><button class='btn-primary'> Edit</button></a></td> */ ?>

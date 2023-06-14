@@ -1,0 +1,14 @@
+03-06-23 03:06:14 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=downloadUser
+03-06-23 03:06:44 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=bulkuploadCustomer
+03-06-23 05:06:48 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=sortUser&sort=username&order=desc
+03-06-23 05:06:06 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=listRiders
+03-06-23 05:06:13 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=sortRiders&sort=riderage&order=asc
+03-06-23 05:06:18 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=viewRiders&id=11
+03-06-23 05:06:22 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=listRiders
+03-06-23 05:06:32 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=sortRiders&sort=rider_block&order=asc
+03-06-23 05:06:36 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=listCustomer
+03-06-23 05:06:42 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=sortCustomer&sort=assigned_to&order=asc
+03-06-23 05:06:46 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=downloadCustomerstatus
+03-06-23 05:06:39 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=listUser
+03-06-23 05:06:06 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=bulkuploadCustomer
+03-06-23 05:06:08 , f3cd4b5c9a08f76e4ca38cb9c07a1b : https://localhost/addaap/webi/Company.php?action=downloadCustomerstatus

@@ -1,0 +1,8 @@
+09-06-23 02:06:14 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=listCustomer
+09-06-23 02:06:19 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=downloadCustomerstatus
+09-06-23 02:06:21 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=listCustomer
+09-06-23 02:06:27 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=listCustomer
+09-06-23 02:06:30 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=editRiders
+09-06-23 02:06:36 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=listCustomer
+09-06-23 02:06:38 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=viewCustomer&id=1
+09-06-23 02:06:40 , ceef344b2c821a419f79decfec1a39 : https://localhost/addaap/webi/Riders.php?action=listCustomer
