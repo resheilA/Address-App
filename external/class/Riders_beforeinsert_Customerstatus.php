@@ -13,6 +13,7 @@ if (mysqli_num_rows($result) > 0) {
 		$_POST["statuscompany"] = $row["assigned_company"];		
 	}
 }
+mysqli_close($conn);
 
 
 ?>

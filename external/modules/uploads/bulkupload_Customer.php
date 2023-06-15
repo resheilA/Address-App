@@ -11,11 +11,11 @@ while (($line = fgetcsv($file)) !== FALSE) {
 	{
 		if($linecount > 0)
 		{	
-			$sql_campign = "SELECT campaignname FROM Campaign WHERE id='".$line[19]."'";
+			$sql_campign = "SELECT campaignname FROM campaign WHERE id='".$line[19]."'";
 			$result = $conn->query($sql_campign);
 				
 			if ($result->num_rows > 0) {
-				$sql = "SELECT ridercode, ridercompany FROM Riders WHERE ridercontactnumber='".$line[0]."'";
+				$sql = "SELECT ridercode, ridercompany FROM riders WHERE ridercontactnumber='".$line[0]."'";
 				$result = $conn->query($sql);
 					
 				if ($result->num_rows > 0) {
@@ -56,12 +56,12 @@ if($uploadready == 1)
 	
 		if($linecount > 0)
 		{	
-		$sql_campign = "SELECT campaignname FROM Campaign WHERE id='".$line[19]."'";
+		$sql_campign = "SELECT campaignname FROM campaign WHERE id='".$line[19]."'";
 		$result = $conn->query($sql_campign);
 					
 				if ($result->num_rows > 0) {
 					
-					$sql = "SELECT ridercode, ridercompany FROM Riders WHERE ridercontactnumber='".$line[0]."'";
+					$sql = "SELECT ridercode, ridercompany FROM riders WHERE ridercontactnumber='".$line[0]."'";
 					$result = $conn->query($sql);
 						
 					if ($result->num_rows > 0) {

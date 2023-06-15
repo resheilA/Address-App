@@ -2,7 +2,7 @@
 class='btn-primary'> Edit</button></a></td> */
 include("connect.php");
 
-$sql = "SELECT Customer.id, Customerstatus.latitude, Customerstatus.longitude, cushomelangitude,cushomelongitude FROM Customerstatus JOIN Customer on Customer.id = Customerstatus.customer where Customerstatus.id = '".$Customerstatus->id."' LIMIT 1";
+$sql = "SELECT customer.id, customerstatus.latitude, customerstatus.longitude, cushomelangitude,cushomelongitude FROM customerstatus JOIN customer on customer.id = customerstatus.customer where customerstatus.id = '".$Customerstatus->id."' LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

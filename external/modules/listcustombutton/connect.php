@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "justtmwa_addapp";
-$password = "NzOV[5B}(u&u";
-$dbname = "justtmwa_address";
+$username = "root";
+$password = "";
+$dbname = "addressapp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -2,7 +2,7 @@
 
 include("external/connect.php");
 
-$sql = "SELECT assigned_to,assigned_company FROM Customer where id = '".$_POST["customer"]."' LIMIT 1";
+$sql = "SELECT assigned_to,assigned_company FROM customer where id = '".$_POST["customer"]."' LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

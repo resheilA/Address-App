@@ -1,6 +1,6 @@
 
 <?php
-
+ob_start();
 require( "config.php" );
 session_start();
 $action = isset( $_GET['action'] ) ? $_GET['action'] : "";
@@ -430,10 +430,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = User::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Company ON User.usercompany = Company.companycode JOIN Flag ON User.user_block = Flag.flagvalue', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -442,8 +447,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadUser.php" );
 				 
@@ -463,10 +467,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = Riders::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Company ON Riders.ridercompany = Company.companycode JOIN Flag ON Riders.rider_block = Flag.flagvalue', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -475,8 +484,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadRiders.php" );
 				 
@@ -496,10 +504,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = Customer::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Riders ON Customer.assigned_to = Riders.ridercode JOIN Flag ON Customer.customer_block = Flag.flagvalue JOIN Company ON Customer.assigned_company = Company.companycode JOIN Campaign ON Customer.customercampaign = Campaign.id', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -508,8 +521,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadCustomer.php" );
 				 
@@ -529,10 +541,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = Customerstatus::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Customer ON Customerstatus.customer = Customer.id JOIN Company ON Customerstatus.statuscompany = Company.companycode JOIN Riders ON Customerstatus.statusrider = Riders.ridercode', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -541,8 +558,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadCustomerstatus.php" );
 				 
@@ -562,10 +578,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = Payout::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Riders ON Payout.payoutrider = Riders.ridercode JOIN Company ON Payout.payoutcompany = Company.companycode JOIN Paymentmode ON Payout.payoutstatus = Paymentmode.id', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -574,8 +595,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadPayout.php" );
 				 
@@ -595,10 +615,15 @@ return($bytes);
 					  $postarr = array_map('ucfirst', $_POST);
 					  					  
 					  $dataforcsv = Campaign::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Company ON Campaign.campaigncompany = Company.companycode', $fromdate, $todate);
-					  
-					  $fp = fopen('save.csv', 'w');
+					  	  
+					  header( 'Content-Type: application/csv' );
+                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
+					  ob_end_clean();
+    
+					  $fp = fopen('php://output', 'w');
 					  $rowhead = $postarr;
 					  fputcsv($fp, $rowhead);  
+	
 																
 					  foreach($dataforcsv["results"] as $csvrowdata)
 					  {
@@ -607,8 +632,7 @@ return($bytes);
 					  }
 						
 					  fclose($fp);
-
-
+					  ob_flush();exit();
 				  }
 				  require( TEMPLATE_PATH . "/Company/downloadCampaign.php" );
 				 

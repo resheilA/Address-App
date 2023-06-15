@@ -8,7 +8,7 @@ echo "<td><a target='_blank' href='https://www.google.com/maps?saddr=My+Location
 include("connect.php");
 
 
-$sql = "SELECT Customerstatus.id, Customerstatus.latitude, Customerstatus.longitude, cushomelangitude,cushomelongitude FROM Customer JOIN Customerstatus on Customer.id = Customerstatus.customer where Customerstatus.customer = '".$Customer->id."' LIMIT 1";
+$sql = "SELECT customerstatus.id, customerstatus.latitude, customerstatus.longitude, cushomelangitude,cushomelongitude FROM customer JOIN customerstatus on customer.id = customerstatus.customer where customerstatus.customer = '".$Customer->id."' LIMIT 1";
 
 $result = mysqli_query($conn, $sql);
 
