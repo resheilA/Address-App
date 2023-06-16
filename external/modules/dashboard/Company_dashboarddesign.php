@@ -1,3 +1,38 @@
+<div class="row">
+		<div class="col-3">	
+		<a href="?action=listCustomer">	
+		  <div class="card bg-warning text-white">
+			<div class="card-body">List All Customers</div>
+		  </div>
+		</a>  
+		</div>
+		
+
+		<div class="col-3">	
+		<a href="?action=listCustomerstatus">	
+		  <div class="card bg-warning text-white">
+			<div class="card-body">List All Customer Status</div>
+		  </div>
+		</a>  
+		</div> 
+
+		<div class="col-3">	
+		<a href="?action=listPayout">	
+		  <div class="card bg-warning text-white">
+			<div class="card-body">Your Payouts</div>
+		  </div>
+		</a>  
+		</div> 
+		
+		
+		<div class="col-3">	
+		<a href="?action=editRiders">	
+		  <div class="card bg-warning text-white">
+			<div class="card-body">Edit Profile</div>
+		  </div>
+		</a>  
+		</div> 
+</div>
 <?php echo "Hello ".$_SESSION["companyname"]. "! ". getgreeting(); 
 
 function getgreeting(){

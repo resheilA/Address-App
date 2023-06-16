@@ -18,6 +18,8 @@ if ( $action != "login" && $action != "signup" && $action != "logout" && !$usern
   exit;
 }
 
+include_once("external/modules/beforeload/beforeloading_Company.php");
+
 switch ( $action ) {
   case 'dashboard':
     dashboard();
