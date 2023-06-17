@@ -36,6 +36,8 @@
 		public $statusrider = null;			
 				
 		public $cusstatecode = null;			
+				
+		public $customerstatusaddedon = null;			
 					
 			
 		 public function __construct( $data=array() ) {	
@@ -55,7 +57,8 @@
 		if ( isset( $data['statuscompany'] ) ) $this->statuscompany = $data['statuscompany'];
 			if ( isset( $data['ridername'] ) ) $this->ridername = $data['ridername'];
 		if ( isset( $data['statusrider'] ) ) $this->statusrider = $data['statusrider'];
-		if ( isset( $data['cusstatecode'] ) ) $this->cusstatecode = $data['cusstatecode'];	
+		if ( isset( $data['cusstatecode'] ) ) $this->cusstatecode = $data['cusstatecode'];
+		if ( isset( $data['customerstatusaddedon'] ) ) $this->customerstatusaddedon = $data['customerstatusaddedon'];	
 		 }
 		
 		 public function storeFormValues ( $params ) {
@@ -65,7 +68,7 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Customerstatus ( id,latitude,longitude,visitpicture1,visitpicture2,visitpicture3,collectedamount,code,remarks,customer,statuscompany,statusrider,cusstatecode ) VALUES ( :id, :latitude, :longitude, :visitpicture1, :visitpicture2, :visitpicture3, :collectedamount, :code, :remarks, :customer, :statuscompany, :statusrider, :cusstatecode )";
+			$sql = "INSERT INTO Customerstatus ( id,latitude,longitude,visitpicture1,visitpicture2,visitpicture3,collectedamount,code,remarks,customer,statuscompany,statusrider,cusstatecode,customerstatusaddedon ) VALUES ( :id, :latitude, :longitude, :visitpicture1, :visitpicture2, :visitpicture3, :collectedamount, :code, :remarks, :customer, :statuscompany, :statusrider, :cusstatecode, :customerstatusaddedon )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -81,6 +84,7 @@
 		$st->bindValue( "statuscompany", $this->statuscompany, PDO::PARAM_STR );
 		$st->bindValue( "statusrider", $this->statusrider, PDO::PARAM_STR );
 		$st->bindValue( "cusstatecode", $this->cusstatecode, PDO::PARAM_STR );
+		$st->bindValue( "customerstatusaddedon", $this->customerstatusaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		  }
@@ -88,7 +92,7 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Customerstatus SET id=:id, latitude=:latitude, longitude=:longitude, visitpicture1=:visitpicture1, visitpicture2=:visitpicture2, visitpicture3=:visitpicture3, collectedamount=:collectedamount, code=:code, remarks=:remarks, customer=:customer, statuscompany=:statuscompany, statusrider=:statusrider, cusstatecode=:cusstatecode WHERE id = :id";
+			$sql = "UPDATE Customerstatus SET id=:id, latitude=:latitude, longitude=:longitude, visitpicture1=:visitpicture1, visitpicture2=:visitpicture2, visitpicture3=:visitpicture3, collectedamount=:collectedamount, code=:code, remarks=:remarks, customer=:customer, statuscompany=:statuscompany, statusrider=:statusrider, cusstatecode=:cusstatecode, customerstatusaddedon=:customerstatusaddedon WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -104,6 +108,7 @@
 		$st->bindValue( "statuscompany", $this->statuscompany, PDO::PARAM_STR );
 		$st->bindValue( "statusrider", $this->statusrider, PDO::PARAM_STR );
 		$st->bindValue( "cusstatecode", $this->cusstatecode, PDO::PARAM_STR );
+		$st->bindValue( "customerstatusaddedon", $this->customerstatusaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		}
@@ -282,14 +287,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

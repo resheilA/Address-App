@@ -14,6 +14,8 @@
 			public $companyname = null;	
 			
 		public $campaigncompany = null;			
+				
+		public $campaignaddedon = null;			
 					
 			
 		 public function __construct( $data=array() ) {	
@@ -22,7 +24,8 @@
 		if ( isset( $data['campaignname'] ) ) $this->campaignname = $data['campaignname'];
 		if ( isset( $data['campaigndescription'] ) ) $this->campaigndescription = $data['campaigndescription'];
 			if ( isset( $data['companyname'] ) ) $this->companyname = $data['companyname'];
-		if ( isset( $data['campaigncompany'] ) ) $this->campaigncompany = $data['campaigncompany'];	
+		if ( isset( $data['campaigncompany'] ) ) $this->campaigncompany = $data['campaigncompany'];
+		if ( isset( $data['campaignaddedon'] ) ) $this->campaignaddedon = $data['campaignaddedon'];	
 		 }
 		
 		 public function storeFormValues ( $params ) {
@@ -32,13 +35,14 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Campaign ( id,campaignname,campaigndescription,campaigncompany ) VALUES ( :id, :campaignname, :campaigndescription, :campaigncompany )";
+			$sql = "INSERT INTO Campaign ( id,campaignname,campaigndescription,campaigncompany,campaignaddedon ) VALUES ( :id, :campaignname, :campaigndescription, :campaigncompany, :campaignaddedon )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
 		$st->bindValue( "campaignname", $this->campaignname, PDO::PARAM_STR );
 		$st->bindValue( "campaigndescription", $this->campaigndescription, PDO::PARAM_STR );
 		$st->bindValue( "campaigncompany", $this->campaigncompany, PDO::PARAM_STR );
+		$st->bindValue( "campaignaddedon", $this->campaignaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		  }
@@ -46,13 +50,14 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Campaign SET id=:id, campaignname=:campaignname, campaigndescription=:campaigndescription, campaigncompany=:campaigncompany WHERE id = :id";
+			$sql = "UPDATE Campaign SET id=:id, campaignname=:campaignname, campaigndescription=:campaigndescription, campaigncompany=:campaigncompany, campaignaddedon=:campaignaddedon WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
 		$st->bindValue( "campaignname", $this->campaignname, PDO::PARAM_STR );
 		$st->bindValue( "campaigndescription", $this->campaigndescription, PDO::PARAM_STR );
 		$st->bindValue( "campaigncompany", $this->campaigncompany, PDO::PARAM_STR );
+		$st->bindValue( "campaignaddedon", $this->campaignaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		}
@@ -219,14 +224,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

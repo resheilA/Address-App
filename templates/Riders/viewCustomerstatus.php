@@ -74,6 +74,11 @@
 						<td><?php echo convertlang("Customerstatus|cusstatecode"); ?></td> 
 						<td><?php echo htmlspecialchars( $results['Customerstatus']->cusstatecode ); ?></td>
 					</tr>	
+						
+					<tr>
+						<td><?php echo convertlang("Customerstatus|customerstatusaddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Customerstatus']->customerstatusaddedon ); ?></td>
+					</tr>	
 			
 	  </tbody>
 			</table>

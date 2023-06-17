@@ -22,6 +22,8 @@
 				<textarea name="campaigndescription" class="form-control" id="campaigndescription" style="height: 5em;"  placeholder="<?php echo convertlang('Campaign|campaigndescription'); ?>"><?php echo htmlspecialchars(  $results['Campaign']->campaigndescription )?></textarea>
 				<?php $results['Campaign']->campaigncompany = $_SESSION["companycode"]; ?>	
 				<input type="hidden" id="campaigncompany" class="form-control" name="campaigncompany" value="<?php echo $results['Campaign']->campaigncompany ?>"/>
+					
+				<input type="hidden" id="campaignaddedon" class="form-control" name="campaignaddedon" value="<?php echo $results['Campaign']->campaignaddedon ?>"/>
 				
 						
 					<br>

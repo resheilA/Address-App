@@ -129,7 +129,12 @@
 				</tr><tr>
 				<td><?php echo convertlang("Customer|customercampaign"); ?></td> 
 				<td><?php echo Campaign::getByid( $results["Customer"]->customercampaign)->campaignname; ?></td>
-				</tr>
+				</tr>			
+					<tr>
+						<td><?php echo convertlang("Customer|customeraddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Customer']->customeraddedon ); ?></td>
+					</tr>	
+			
 	  </tbody>
 			</table>
       <p><a href="admin.php?action=listCustomer">Return to Homepage</a></p>

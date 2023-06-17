@@ -77,6 +77,11 @@
 						<td><?php echo convertlang("Company|adminusername"); ?></td> 
 						<td><?php echo htmlspecialchars( $results['Company']->adminusername ); ?></td>
 					</tr>	
+			<?php $results['Company']->adminpassword= "*******"; ?>			
+					<tr>
+						<td><?php echo convertlang("Company|adminpassword"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Company']->adminpassword ); ?></td>
+					</tr>	
 						
 					<tr>
 						<td><?php echo convertlang("Company|cashfreeapikey"); ?></td> 
@@ -87,10 +92,10 @@
 						<td><?php echo convertlang("Company|cashfreeapipass"); ?></td> 
 						<td><?php echo htmlspecialchars( $results['Company']->cashfreeapipass ); ?></td>
 					</tr>	
-			<?php $results['Company']->adminpassword= "*******"; ?>			
+						
 					<tr>
-						<td><?php echo convertlang("Company|adminpassword"); ?></td> 
-						<td><?php echo htmlspecialchars( $results['Company']->adminpassword ); ?></td>
+						<td><?php echo convertlang("Company|companyaddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Company']->companyaddedon ); ?></td>
 					</tr>	
 			<tr>
 				<td><?php echo convertlang("Company|company_block"); ?></td> 

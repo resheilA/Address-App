@@ -130,6 +130,8 @@
 						}
 				?>	
 				</select>
+					
+				<input type="hidden" class="form-control" name="customeraddedon" id="customeraddedon" value="<?php echo $results['Customer']->customeraddedon ?>"/>
 				
 						
 					<br>

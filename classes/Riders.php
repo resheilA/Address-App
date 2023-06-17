@@ -44,6 +44,8 @@
 			public $flagname = null;	
 			
 		public $rider_block = null;			
+				
+		public $rideraddedon = null;			
 					
 			
 		 public function __construct( $data=array() ) {	
@@ -67,7 +69,8 @@
 		if ( isset( $data['ridercode'] ) ) $this->ridercode = $data['ridercode'];
 		if ( isset( $data['password'] ) ) $this->password = $data['password'];
 			if ( isset( $data['flagname'] ) ) $this->flagname = $data['flagname'];
-		if ( isset( $data['rider_block'] ) ) $this->rider_block = $data['rider_block'];	
+		if ( isset( $data['rider_block'] ) ) $this->rider_block = $data['rider_block'];
+		if ( isset( $data['rideraddedon'] ) ) $this->rideraddedon = $data['rideraddedon'];	
 		 }
 		
 		 public function storeFormValues ( $params ) {
@@ -77,7 +80,7 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Riders ( id,ridername,rideraddress,ridercontactnumber,ridercompany,riderage,riderprofilepic,rideraadharcard,riderpancard,riderresidence,riderdra,riderpcc,bankaccno,bankifsc,riderbeneid,ridercode,password,rider_block ) VALUES ( :id, :ridername, :rideraddress, :ridercontactnumber, :ridercompany, :riderage, :riderprofilepic, :rideraadharcard, :riderpancard, :riderresidence, :riderdra, :riderpcc, :bankaccno, :bankifsc, :riderbeneid, :ridercode, :password, :rider_block )";
+			$sql = "INSERT INTO Riders ( id,ridername,rideraddress,ridercontactnumber,ridercompany,riderage,riderprofilepic,rideraadharcard,riderpancard,riderresidence,riderdra,riderpcc,bankaccno,bankifsc,riderbeneid,ridercode,password,rider_block,rideraddedon ) VALUES ( :id, :ridername, :rideraddress, :ridercontactnumber, :ridercompany, :riderage, :riderprofilepic, :rideraadharcard, :riderpancard, :riderresidence, :riderdra, :riderpcc, :bankaccno, :bankifsc, :riderbeneid, :ridercode, :password, :rider_block, :rideraddedon )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -98,6 +101,7 @@
 		$st->bindValue( "ridercode", $this->ridercode, PDO::PARAM_STR );
 		$st->bindValue( "password", $this->password, PDO::PARAM_STR );
 		$st->bindValue( "rider_block", $this->rider_block, PDO::PARAM_STR );
+		$st->bindValue( "rideraddedon", $this->rideraddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		  }
@@ -105,7 +109,7 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Riders SET id=:id, ridername=:ridername, rideraddress=:rideraddress, ridercontactnumber=:ridercontactnumber, ridercompany=:ridercompany, riderage=:riderage, riderprofilepic=:riderprofilepic, rideraadharcard=:rideraadharcard, riderpancard=:riderpancard, riderresidence=:riderresidence, riderdra=:riderdra, riderpcc=:riderpcc, bankaccno=:bankaccno, bankifsc=:bankifsc, riderbeneid=:riderbeneid, ridercode=:ridercode, password=:password, rider_block=:rider_block WHERE id = :id";
+			$sql = "UPDATE Riders SET id=:id, ridername=:ridername, rideraddress=:rideraddress, ridercontactnumber=:ridercontactnumber, ridercompany=:ridercompany, riderage=:riderage, riderprofilepic=:riderprofilepic, rideraadharcard=:rideraadharcard, riderpancard=:riderpancard, riderresidence=:riderresidence, riderdra=:riderdra, riderpcc=:riderpcc, bankaccno=:bankaccno, bankifsc=:bankifsc, riderbeneid=:riderbeneid, ridercode=:ridercode, password=:password, rider_block=:rider_block, rideraddedon=:rideraddedon WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -126,6 +130,7 @@
 		$st->bindValue( "ridercode", $this->ridercode, PDO::PARAM_STR );
 		$st->bindValue( "password", $this->password, PDO::PARAM_STR );
 		$st->bindValue( "rider_block", $this->rider_block, PDO::PARAM_STR );
+		$st->bindValue( "rideraddedon", $this->rideraddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		}
@@ -304,14 +309,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

@@ -21,22 +21,6 @@ switch ( $action ) {
     dashboard();
     break;
   
-			  case 'newUser':
-				newUser();
-				break;
-			  case 'editUser':
-				editUser();
-				break;
-			  case 'deleteUser':
-				deleteUser();
-				break;
-			  case 'listUser':
-				listUser();
-				break;	
-			  case 'viewUser':
-				viewUser();
-				break;		
-			
 			  case 'newCompany':
 				newCompany();
 				break;
@@ -238,13 +222,6 @@ return(bin2hex($bytes));
 }
 
  
-				function viewUser() {
-				  $results = array();
-				  $results['User'] = User::getById( (int)$_GET["id"] );
-				  $results['pageTitle'] = 'User|objname Main|Details';			
-				  require( TEMPLATE_PATH . "/admin/viewUser.php" );
-				 
-				} 
 				function viewCompany() {
 				  $results = array();
 				  $results['Company'] = Company::getById( (int)$_GET["id"] );
@@ -302,61 +279,6 @@ return(bin2hex($bytes));
 				 
 				}
 
-				
-				function newUser() {
-
-				  $results = array();
-				  $results['pageTitle'] = 'Main|New User|objname';				  
-				  $results['formAction'] = "newUser";
-				 		
-				  if ( isset( $_POST['saveChanges'] ) ) {
-						
-					
-					
-					include('external/class/beforeinsert_User.php');
-					
-					include_once('external/validations.php');
-					$checkvalidation = checkvalidation();
-									
-					// User has posted the User edit form: save the new User
-					$User = new User;
-					$User->storeFormValues( $_POST );
-					
-					
-					
-					if($checkvalidation == true)
-					{
-						$User->saveimage($_FILES);
-						$User->insert();
-						include('external/class/afterinsert_User.php');
-						header( "Location: admin.php?action=listUser&status=changesSaved" );
-					}
-					else
-					{
-						$results['errorMessage'] = "<p class='p-2'>Error: Please check the information entered.</p>";
-						$results['Customer'] = $Customer;						
-						require( TEMPLATE_PATH . "/admin/editUser.php" );
-					}												
-						
-				  } 
-				  elseif ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "Error: User already exist in system.";
-				  }
-				  elseif ( isset( $_POST['cancel'] ) ) {
-
-					// User has cancelled their edits: return to the User list
-					header( "Location: admin.php" );
-				  } else {
-							
-					// User has not posted the article edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();
-					$results['User'] = new User;
-					include('external/classedit/beforeloadingedit_User.php');
-					require( TEMPLATE_PATH . "/admin/editUser.php" );
-				  }
-
-				}
-				
 				
 				function newCompany() {
 
@@ -798,78 +720,6 @@ return(bin2hex($bytes));
 				}
 				
 
-			function editUser() {
-					
-				 $results = array();
-				 $results['pageTitle'] = 'Main|Edit User|objname';
-				 $results['formAction'] = "editUser";
-
-				  if ( isset( $_POST['saveChanges'] ) ) {
-
-					// User has posted the article edit form: save the article changes
-					
-					
-					
-					include_once('external/validations.php');
-					$checkvalidation = checkvalidation();
-					
-					if ( !$User = User::getById( (int)$_POST['UserId'] ) ) {
-					  header( "Location: admin.php?error=UserNotFound" );
-					  return;
-					}
-					
-					include('external/class/beforeupdate_User.php');
-										
-					$User->storeFormValues( $_POST );
-					
-					if($checkvalidation == true)
-					{
-					$User->saveimage($_FILES);					
-					$User->update();
-					include('external/class/afterupdate_User.php');
-					}
-					else
-					{
-						$results['errorMessage'] = "<p class='p-2'>Error: Please check the information entered.</p>";
-						$results['Customer'] = $Customer;						
-						require( TEMPLATE_PATH . "/admin/editUser.php" );
-					}		
-					
-					if (strpos('User', 'setting') !== false) 
-					{
-					$objn = str_replace('setting', '', $_GET['action']);
-					$objn = str_replace('edit', '', $objn);
-					header( "Location: admin.php?action=list".ucfirst($objn)."&status=changesSaved" );
-					}
-					else
-					{
-					header( "Location: admin.php?action=listUser&status=changesSaved" );	
-					}
-					
-				  } elseif ( isset( $_POST['cancel'] ) ) {
-
-					// User has cancelled their edits: return to the User list
-					header( "Location: admin.php" );
-				  } else {
-					
-					if(isset($_GET['session']) && $_GET['session'] == 'active')
-					{
-					// User has not posted the User edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();
-					$results['User'] = User::getByDomain( (int)$_SESSION["domainid"] );						
-					}
-					else
-					{
-					// User has not posted the User edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();
-					$results['User'] = User::getById( (int)$_GET['UserId'] );
-					}
-					include('external/classedit/beforeloadingedit_User.php');
-					require( TEMPLATE_PATH . "/admin/editUser.php" );
-				  }
-
-				}
-			
 			function editCompany() {
 					
 				 $results = array();
@@ -1447,17 +1297,6 @@ return(bin2hex($bytes));
 				}
 			
 
-			function deleteUser() {
-
-				  if ( !$User = User::getById( (int)$_GET['UserId'] ) ) {
-					header( "Location: admin.php?error=UserNotFound" );
-					return;
-				  }
-
-				  $User->delete();
-				  header( "Location: admin.php?action=listUser&status=UserDeleted" );
-				}
-			
 			function deleteCompany() {
 
 				  if ( !$Company = Company::getById( (int)$_GET['CompanyId'] ) ) {
@@ -1547,33 +1386,6 @@ return(bin2hex($bytes));
 				}
 			
 
-				function listUser() {
-				  $results = array();
-				  
-				  if(!isset($_GET["pageno"]))
-				  {
-					 $_GET["pageno"] = 1;
-				  }
-				  
-				  
-				  $data = User::getList($_GET['pageno']);
-				  $results['User'] = $data['results'];
-				  $results['totalRows'] = $data['totalRows'];
-				  $results['pageTitle'] = "Main|All User|objname";
-
-				  if ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "User|objname Main|notfound";
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "User|objname Main|errorexist";
-				  }
-
-				  if ( isset( $_GET['status'] ) ) {
-					if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Main|notifysuccess";
-					if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "User|objname Main|Deleted";
-				  }
-
-				  require( TEMPLATE_PATH . "/admin/listUser.php" );
-				}
-			
 				function listCompany() {
 				  $results = array();
 				  

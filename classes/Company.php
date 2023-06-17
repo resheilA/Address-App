@@ -29,11 +29,13 @@
 				
 		public $adminusername = null;			
 				
+		public $adminpassword = null;			
+				
 		public $cashfreeapikey = null;			
 				
 		public $cashfreeapipass = null;			
 				
-		public $adminpassword = null;			
+		public $companyaddedon = null;			
 				
 			public $flagname = null;	
 			
@@ -54,9 +56,10 @@
 		if ( isset( $data['companydirectordoc'] ) ) $this->companydirectordoc = $data['companydirectordoc'];
 		if ( isset( $data['companycode'] ) ) $this->companycode = $data['companycode'];
 		if ( isset( $data['adminusername'] ) ) $this->adminusername = $data['adminusername'];
+		if ( isset( $data['adminpassword'] ) ) $this->adminpassword = $data['adminpassword'];
 		if ( isset( $data['cashfreeapikey'] ) ) $this->cashfreeapikey = $data['cashfreeapikey'];
 		if ( isset( $data['cashfreeapipass'] ) ) $this->cashfreeapipass = $data['cashfreeapipass'];
-		if ( isset( $data['adminpassword'] ) ) $this->adminpassword = $data['adminpassword'];
+		if ( isset( $data['companyaddedon'] ) ) $this->companyaddedon = $data['companyaddedon'];
 			if ( isset( $data['flagname'] ) ) $this->flagname = $data['flagname'];
 		if ( isset( $data['company_block'] ) ) $this->company_block = $data['company_block'];	
 		 }
@@ -68,7 +71,7 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Company ( id,companyname,companycontact,companyaddress,gstno,logo,companypan,companycoi,companygst,companydirectordoc,companycode,adminusername,cashfreeapikey,cashfreeapipass,adminpassword,company_block ) VALUES ( :id, :companyname, :companycontact, :companyaddress, :gstno, :logo, :companypan, :companycoi, :companygst, :companydirectordoc, :companycode, :adminusername, :cashfreeapikey, :cashfreeapipass, :adminpassword, :company_block )";
+			$sql = "INSERT INTO Company ( id,companyname,companycontact,companyaddress,gstno,logo,companypan,companycoi,companygst,companydirectordoc,companycode,adminusername,adminpassword,cashfreeapikey,cashfreeapipass,companyaddedon,company_block ) VALUES ( :id, :companyname, :companycontact, :companyaddress, :gstno, :logo, :companypan, :companycoi, :companygst, :companydirectordoc, :companycode, :adminusername, :adminpassword, :cashfreeapikey, :cashfreeapipass, :companyaddedon, :company_block )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -83,9 +86,10 @@
 		$st->bindValue( "companydirectordoc", $this->companydirectordoc, PDO::PARAM_STR );
 		$st->bindValue( "companycode", $this->companycode, PDO::PARAM_STR );
 		$st->bindValue( "adminusername", $this->adminusername, PDO::PARAM_STR );
+		$st->bindValue( "adminpassword", $this->adminpassword, PDO::PARAM_STR );
 		$st->bindValue( "cashfreeapikey", $this->cashfreeapikey, PDO::PARAM_STR );
 		$st->bindValue( "cashfreeapipass", $this->cashfreeapipass, PDO::PARAM_STR );
-		$st->bindValue( "adminpassword", $this->adminpassword, PDO::PARAM_STR );
+		$st->bindValue( "companyaddedon", $this->companyaddedon, PDO::PARAM_STR );
 		$st->bindValue( "company_block", $this->company_block, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
@@ -94,7 +98,7 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Company SET id=:id, companyname=:companyname, companycontact=:companycontact, companyaddress=:companyaddress, gstno=:gstno, logo=:logo, companypan=:companypan, companycoi=:companycoi, companygst=:companygst, companydirectordoc=:companydirectordoc, companycode=:companycode, adminusername=:adminusername, cashfreeapikey=:cashfreeapikey, cashfreeapipass=:cashfreeapipass, adminpassword=:adminpassword, company_block=:company_block WHERE id = :id";
+			$sql = "UPDATE Company SET id=:id, companyname=:companyname, companycontact=:companycontact, companyaddress=:companyaddress, gstno=:gstno, logo=:logo, companypan=:companypan, companycoi=:companycoi, companygst=:companygst, companydirectordoc=:companydirectordoc, companycode=:companycode, adminusername=:adminusername, adminpassword=:adminpassword, cashfreeapikey=:cashfreeapikey, cashfreeapipass=:cashfreeapipass, companyaddedon=:companyaddedon, company_block=:company_block WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -109,9 +113,10 @@
 		$st->bindValue( "companydirectordoc", $this->companydirectordoc, PDO::PARAM_STR );
 		$st->bindValue( "companycode", $this->companycode, PDO::PARAM_STR );
 		$st->bindValue( "adminusername", $this->adminusername, PDO::PARAM_STR );
+		$st->bindValue( "adminpassword", $this->adminpassword, PDO::PARAM_STR );
 		$st->bindValue( "cashfreeapikey", $this->cashfreeapikey, PDO::PARAM_STR );
 		$st->bindValue( "cashfreeapipass", $this->cashfreeapipass, PDO::PARAM_STR );
-		$st->bindValue( "adminpassword", $this->adminpassword, PDO::PARAM_STR );
+		$st->bindValue( "companyaddedon", $this->companyaddedon, PDO::PARAM_STR );
 		$st->bindValue( "company_block", $this->company_block, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
@@ -291,14 +296,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

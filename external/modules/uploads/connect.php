@@ -1,7 +1,7 @@
 <?php
-$servername = "justtmwa_address";
-$username = "justtmwa_addapp";
-$password = "NzOV[5B}(u&u";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $dbname = "addressapp";
 
 // Create connection

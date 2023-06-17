@@ -35,6 +35,8 @@
 						}
 				?>	
 				</select>
+					
+				<input type="hidden" class="form-control" name="campaignaddedon" id="campaignaddedon" value="<?php echo $results['Campaign']->campaignaddedon ?>"/>
 				
 						
 					<br>

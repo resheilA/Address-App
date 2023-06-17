@@ -120,6 +120,8 @@
 				<input type="hidden" id="statusrider" class="form-control" name="statusrider" value="<?php echo $results['Customerstatus']->statusrider ?>"/>
 					
 				<input type="hidden" class="form-control" id="cusstatecode" name="cusstatecode" value="<?php if($results['Customerstatus']->cusstatecode == ""){echo randomstr(15);}else{echo $results['Customerstatus']->cusstatecode;} ?>"/>
+					
+				<input type="hidden" id="customerstatusaddedon" class="form-control" name="customerstatusaddedon" value="<?php echo $results['Customerstatus']->customerstatusaddedon ?>"/>
 				
 						
 					<br>

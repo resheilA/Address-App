@@ -103,7 +103,12 @@
 			<tr>
 				<td><?php echo convertlang("Riders|rider_block"); ?></td> 
 				<td><?php echo Flag::getByflagvalue( $results["Riders"]->rider_block)->flagname; ?></td>
-				</tr>
+				</tr>			
+					<tr>
+						<td><?php echo convertlang("Riders|rideraddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Riders']->rideraddedon ); ?></td>
+					</tr>	
+			
 	  </tbody>
 			</table>
       <p><a href="admin.php?action=listRiders">Return to Homepage</a></p>

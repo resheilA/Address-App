@@ -152,16 +152,18 @@
 				<label for="adminusername"><?php echo convertlang('Company|adminusername'); ?></label>
 				<input type="text" class="form-control" name="adminusername" id="adminusername" placeholder="<?php echo convertlang('Company|adminusername'); ?>"  autofocus maxlength="255" value="<?php echo htmlspecialchars( $results['Company']->adminusername )?>" />
 				</br>
+				<label for="adminpassword"><?php echo convertlang('Company|adminpassword'); ?></label>
+				<input type="password" list="adminpassword_suggestions" onkeyup="ajaxcomplete('ajaxlist_Company_adminpassword', 'adminpassword')" class="form-control" name="adminpassword" id="adminpassword" placeholder="<?php echo convertlang('Company|adminpassword'); ?>"  autofocus maxlength="255" value="<?php echo htmlspecialchars( $results['Company']->adminpassword )?>" />
+				<datalist id="adminpassword_suggestions">
+				</datalist>
+				</br>
 				<label for="cashfreeapikey"><?php echo convertlang('Company|cashfreeapikey'); ?></label>
 				<input type="text" class="form-control" name="cashfreeapikey" id="cashfreeapikey" placeholder="<?php echo convertlang('Company|cashfreeapikey'); ?>"  autofocus maxlength="255" value="<?php echo htmlspecialchars( $results['Company']->cashfreeapikey )?>" />
 				</br>
 				<label for="cashfreeapipass"><?php echo convertlang('Company|cashfreeapipass'); ?></label>
 				<input type="text" class="form-control" name="cashfreeapipass" id="cashfreeapipass" placeholder="<?php echo convertlang('Company|cashfreeapipass'); ?>"  autofocus maxlength="255" value="<?php echo htmlspecialchars( $results['Company']->cashfreeapipass )?>" />
-				</br>
-				<label for="adminpassword"><?php echo convertlang('Company|adminpassword'); ?></label>
-				<input type="password" list="adminpassword_suggestions" onkeyup="ajaxcomplete('ajaxlist_Company_adminpassword', 'adminpassword')" class="form-control" name="adminpassword" id="adminpassword" placeholder="<?php echo convertlang('Company|adminpassword'); ?>"  autofocus maxlength="255" value="<?php echo htmlspecialchars( $results['Company']->adminpassword )?>" />
-				<datalist id="adminpassword_suggestions">
-				</datalist>
+					
+				<input type="hidden" class="form-control" name="companyaddedon" id="companyaddedon" value="<?php echo $results['Company']->companyaddedon ?>"/>
 				</br>
 				<label for="company_block"><?php echo convertlang('Company|company_block'); ?></label>
 				<select name="company_block" class="form-control" id="company_block" placeholder="<?php echo convertlang('Company|company_block'); ?>">

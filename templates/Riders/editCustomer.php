@@ -117,6 +117,8 @@
 						}
 				?>	
 				</select>
+					
+				<input type="hidden" id="customeraddedon" class="form-control" name="customeraddedon" value="<?php echo $results['Customer']->customeraddedon ?>"/>
 				
 						
 					<br>

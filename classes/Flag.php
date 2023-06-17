@@ -223,14 +223,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

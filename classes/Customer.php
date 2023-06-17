@@ -60,6 +60,8 @@
 			public $campaignname = null;	
 			
 		public $customercampaign = null;			
+				
+		public $customeraddedon = null;			
 					
 			
 		 public function __construct( $data=array() ) {	
@@ -91,7 +93,8 @@
 			if ( isset( $data['companyname'] ) ) $this->companyname = $data['companyname'];
 		if ( isset( $data['assigned_company'] ) ) $this->assigned_company = $data['assigned_company'];
 			if ( isset( $data['campaignname'] ) ) $this->campaignname = $data['campaignname'];
-		if ( isset( $data['customercampaign'] ) ) $this->customercampaign = $data['customercampaign'];	
+		if ( isset( $data['customercampaign'] ) ) $this->customercampaign = $data['customercampaign'];
+		if ( isset( $data['customeraddedon'] ) ) $this->customeraddedon = $data['customeraddedon'];	
 		 }
 		
 		 public function storeFormValues ( $params ) {
@@ -101,7 +104,7 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Customer ( id,customername,customercontactnumber,customeremail,cyc,pos,tpd,tad,cuscost,cushomeaddress,cushomepincode,cushomelangitude,cushomelongitude,cusofficeaddress,cusofficepincode,cusofficelangitude,cusofficelongitude,cusarea,customernote,cuscode,assigned_to,customer_block,assigned_company,customercampaign ) VALUES ( :id, :customername, :customercontactnumber, :customeremail, :cyc, :pos, :tpd, :tad, :cuscost, :cushomeaddress, :cushomepincode, :cushomelangitude, :cushomelongitude, :cusofficeaddress, :cusofficepincode, :cusofficelangitude, :cusofficelongitude, :cusarea, :customernote, :cuscode, :assigned_to, :customer_block, :assigned_company, :customercampaign )";
+			$sql = "INSERT INTO Customer ( id,customername,customercontactnumber,customeremail,cyc,pos,tpd,tad,cuscost,cushomeaddress,cushomepincode,cushomelangitude,cushomelongitude,cusofficeaddress,cusofficepincode,cusofficelangitude,cusofficelongitude,cusarea,customernote,cuscode,assigned_to,customer_block,assigned_company,customercampaign,customeraddedon ) VALUES ( :id, :customername, :customercontactnumber, :customeremail, :cyc, :pos, :tpd, :tad, :cuscost, :cushomeaddress, :cushomepincode, :cushomelangitude, :cushomelongitude, :cusofficeaddress, :cusofficepincode, :cusofficelangitude, :cusofficelongitude, :cusarea, :customernote, :cuscode, :assigned_to, :customer_block, :assigned_company, :customercampaign, :customeraddedon )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -128,6 +131,7 @@
 		$st->bindValue( "customer_block", $this->customer_block, PDO::PARAM_STR );
 		$st->bindValue( "assigned_company", $this->assigned_company, PDO::PARAM_STR );
 		$st->bindValue( "customercampaign", $this->customercampaign, PDO::PARAM_STR );
+		$st->bindValue( "customeraddedon", $this->customeraddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		  }
@@ -135,7 +139,7 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Customer SET id=:id, customername=:customername, customercontactnumber=:customercontactnumber, customeremail=:customeremail, cyc=:cyc, pos=:pos, tpd=:tpd, tad=:tad, cuscost=:cuscost, cushomeaddress=:cushomeaddress, cushomepincode=:cushomepincode, cushomelangitude=:cushomelangitude, cushomelongitude=:cushomelongitude, cusofficeaddress=:cusofficeaddress, cusofficepincode=:cusofficepincode, cusofficelangitude=:cusofficelangitude, cusofficelongitude=:cusofficelongitude, cusarea=:cusarea, customernote=:customernote, cuscode=:cuscode, assigned_to=:assigned_to, customer_block=:customer_block, assigned_company=:assigned_company, customercampaign=:customercampaign WHERE id = :id";
+			$sql = "UPDATE Customer SET id=:id, customername=:customername, customercontactnumber=:customercontactnumber, customeremail=:customeremail, cyc=:cyc, pos=:pos, tpd=:tpd, tad=:tad, cuscost=:cuscost, cushomeaddress=:cushomeaddress, cushomepincode=:cushomepincode, cushomelangitude=:cushomelangitude, cushomelongitude=:cushomelongitude, cusofficeaddress=:cusofficeaddress, cusofficepincode=:cusofficepincode, cusofficelangitude=:cusofficelangitude, cusofficelongitude=:cusofficelongitude, cusarea=:cusarea, customernote=:customernote, cuscode=:cuscode, assigned_to=:assigned_to, customer_block=:customer_block, assigned_company=:assigned_company, customercampaign=:customercampaign, customeraddedon=:customeraddedon WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -162,6 +166,7 @@
 		$st->bindValue( "customer_block", $this->customer_block, PDO::PARAM_STR );
 		$st->bindValue( "assigned_company", $this->assigned_company, PDO::PARAM_STR );
 		$st->bindValue( "customercampaign", $this->customercampaign, PDO::PARAM_STR );
+		$st->bindValue( "customeraddedon", $this->customeraddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		}
@@ -340,14 +345,22 @@
 						  $info = getimagesize($images["fileToUpload"]["tmp_name"]);
             
                         if ($info['mime'] == 'image/jpeg') 
+						{
                             $image = imagecreatefromjpeg($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/gif') 
+						{
                             $image = imagecreatefromgif($images["fileToUpload"]["tmp_name"]);
-            
+						}
                         elseif ($info['mime'] == 'image/png') 
+						{
                             $image = imagecreatefrompng($images["fileToUpload"]["tmp_name"]);
-            
+						}
+						else
+						{
+							break();
+						}
+						
                         imagejpeg($image, $target_file, 75);
 					        
 					  echo "Sorry, your file is too large.";

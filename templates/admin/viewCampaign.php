@@ -35,7 +35,12 @@
 			<tr>
 				<td><?php echo convertlang("Campaign|campaigncompany"); ?></td> 
 				<td><?php echo Company::getBycompanycode( $results["Campaign"]->campaigncompany)->companyname; ?></td>
-				</tr>
+				</tr>			
+					<tr>
+						<td><?php echo convertlang("Campaign|campaignaddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Campaign']->campaignaddedon ); ?></td>
+					</tr>	
+			
 	  </tbody>
 			</table>
       <p><a href="admin.php?action=listCampaign">Return to Homepage</a></p>

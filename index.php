@@ -12,9 +12,6 @@ require( TEMPLATE_PATH . "/". $temp ."/navbar.php" );
 
 switch ( $action ) {
   
-			  case 'User':
-				viewUser();
-				break;
 			  case 'Company':
 				viewCompany();
 				break;
@@ -43,15 +40,6 @@ switch ( $action ) {
     viewProduct();
 }
  
-	function viewUser() {
-	  $results = array();
-	  $results['User'] = User::getByDomain( (int)$_GET["domainname"] );
-	  $results['pageTitle'] = "User";
-	  echo '<pre>';
-	  var_dump($results);
-	  echo '</pre>';
-	 // require( TEMPLATE_PATH . "/viewArticle.php" );
-	} 
 	function viewCompany() {
 	  $results = array();
 	  $results['Company'] = Company::getByDomain( (int)$_GET["domainname"] );

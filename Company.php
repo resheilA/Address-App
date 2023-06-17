@@ -37,33 +37,6 @@ switch ( $action ) {
     logout();
     break;
   
-				  case 'newUser':
-					newUser();
-					break;	
-				  case 'editUser':
-					editUser();
-					break;
-					
-				  case 'deleteUser':
-					deleteUser();
-					break;
-					
-				  case 'searchUser':
-					searchUser();
-					break;	
-				  case 'sortUser':
-					sortUser();
-					break;		
-				  case 'listUser':
-					listUser();
-					break;	
-				  case 'viewUser':
-					viewUser();
-					break;
-				  case 'downloadUser':
-					downloadUser();
-					break;	
-				
 				  case 'newRiders':
 					newRiders();
 					break;	
@@ -271,19 +244,6 @@ return($bytes);
 }
 
  
-				function viewUser() {
-				  $results = array();
-				  $results['User'] = User::getById( (int)$_GET["id"] );
-				  $results['pageTitle'] = 'User|objname Main|Details';	
-					
-				   if($results['User'] -> usercompany != $_SESSION['companycode']){
-							header( "Location: Company.php?error=UserNotFound" );
-							return;
-					}
-					
-				  require( TEMPLATE_PATH . "/Company/viewUser.php" );
-				 
-				} 
 				function viewRiders() {
 				  $results = array();
 				  $results['Riders'] = Riders::getById( (int)$_GET["id"] );
@@ -417,43 +377,6 @@ return($bytes);
 				 
 				}
  
-				function downloadUser() {
-				
-				
-				  $results = array();
-				  $results['pageTitle'] = 'Main|Download User|objname';				  
-				  if($_SERVER['REQUEST_METHOD'] == 'POST')
-				  {
-					  $todate = $_POST["dateto"];
-					  $fromdate =  $_POST["datefrom"];
-					  unset($_POST["dateto"]);unset($_POST["datefrom"]);
-						
-					  $dwnldstr = implode(',',array_filter($_POST));
-					  $postarr = array_map('ucfirst', $_POST);
-					  					  
-					  $dataforcsv = User::getListbyjoinCompany($_SESSION['companycode'],$dwnldstr,' JOIN Company ON User.usercompany = Company.companycode JOIN Flag ON User.user_block = Flag.flagvalue', $fromdate, $todate);
-					  	  
-					  header( 'Content-Type: application/csv' );
-                      header( 'Content-Disposition: attachment; filename="' . time() . '.csv";' );                     
-					  ob_end_clean();
-    
-					  $fp = fopen('php://output', 'w');
-					  $rowhead = $postarr;
-					  fputcsv($fp, $rowhead);  
-	
-																
-					  foreach($dataforcsv["results"] as $csvrowdata)
-					  {
-						 $csvrowdata_numless = array_filter($csvrowdata, 'is_int', ARRAY_FILTER_USE_KEY);						
-						fputcsv($fp, $csvrowdata_numless);    
-					  }
-						
-					  fclose($fp);
-					  ob_flush();exit();
-				  }
-				  require( TEMPLATE_PATH . "/Company/downloadUser.php" );
-				 
-				} 
 				function downloadRiders() {
 				
 				
@@ -640,61 +563,6 @@ return($bytes);
 				 
 				}
 
-				
-				function newUser() {
-
-				  $results = array();
-				  $results['pageTitle'] = 'Main|New User|objname';				  
-				  $results['formAction'] = "newUser";
-				 		
-				  if ( isset( $_POST['saveChanges'] ) ) {
-						
-					
-					
-					include('external/class/Company_beforeinsert_User.php');
-					
-					include_once('external/validations.php');
-					$checkvalidation = checkvalidation();
-					
-					
-					// User has posted the User edit form: save the new User
-					$User = new User;
-					$User->storeFormValues( $_POST );
-					
-					if($checkvalidation == true)
-					{
-						$User->saveimage($_FILES);
-						$User->insert();
-						include('external/class/Company_afterinsert_User.php');
-						header( "Location: Company.php?action=listUser&status=changesSaved" );
-						die();
-					}
-					else
-					{
-						$results['errorMessage'] = "<p class='p-2'>Error: Please check the information entered.</p>";
-						$results['Customer'] = $Customer;						
-						require( TEMPLATE_PATH . "/Company/editUser.php" );
-					}												
-						
-				  } 
-				  elseif ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "Error: User already exist in system.";
-				  }
-				  elseif ( isset( $_POST['cancel'] ) ) {
-
-					// User has cancelled their edits: return to the User list
-					header( "Location: Company.php" );
-				  } else {
-							
-					// User has not posted the article edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();
-					$results['User'] = new User;
-					include('external/classedit/beforeloadingedit_User.php');
-					require( TEMPLATE_PATH . "/Company/editUser.php" );
-				  }
-
-				}
-				
 				
 				function newRiders() {
 
@@ -971,77 +839,6 @@ return($bytes);
 				}
 				
 
-			function editUser() {
-					
-				 $results = array();
-				 $results['pageTitle'] = 'Main|Edit User|objname';
-				 $results['formAction'] = "editUser";
-
-				  if ( isset( $_POST['saveChanges'] ) ) {
-
-					// User has posted the article edit form: save the article changes
-					
-					
-					
-					include_once('external/validations.php');
-					$checkvalidation = checkvalidation();
-					
-					if ( !$User = User::getById( (int)$_POST['UserId'] ) ) {
-					  header( "Location: Company.php?error=UserNotFound" );
-					  return;
-					}
-					
-					include('external/class/Company_beforeupdate_User.php');
-					
-					$User->storeFormValues( $_POST );
-					
-					
-					if($checkvalidation == true)
-					{
-					$User->saveimage($_FILES);					
-					$User->update();
-					include('external/class/Company_afterupdate_User.php');
-					}
-					else
-					{
-						$results['errorMessage'] = "<p class='p-2'>Error: Please check the information entered.</p>";
-						$results['Customer'] = $Customer;						
-						require( TEMPLATE_PATH . "/Company/editUser.php" );
-					}		
-					
-					if (strpos('User', 'setting') !== false) 
-					{
-					$objn = str_replace('setting', '', $_GET['action']);
-					$objn = str_replace('edit', '', $objn);
-					header( "Location: Company.php?action=list".ucfirst($objn)."&status=changesSaved" );
-					die();
-					}
-					else
-					{
-					header( "Location: Company.php?action=listUser&status=changesSaved" );	
-					die();
-					}
-					
-				  } elseif ( isset( $_POST['cancel'] ) ) {
-
-					// User has cancelled their edits: return to the User list
-					header( "Location: Company.php" );
-				  } else {
-					
-					// User has not posted the User edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();
-					$results['User'] = User::getById( (int)$_GET['UserId'] );					
-					
-					if($results['User'] -> usercompany != $_SESSION['companycode']){
-							header( "Location: Company.php?error=UserNotFound" );
-							return;
-					}
-				  }
-					include('external/classedit/beforeloadingedit_User.php');
-					require( TEMPLATE_PATH . "/Company/editUser.php" );
-				  }
-
-			
 			function editRiders() {
 					
 				 $results = array();
@@ -1327,17 +1124,6 @@ return($bytes);
 
 			
 
-			function deleteUser() {
-
-				  if ( !$User = User::getById( (int)$_GET['UserId'] ) ) {
-					header( "Location: Company.php?error=UserNotFound" );
-					return;
-				  }
-
-				  $User->delete();
-				  header( "Location: Company.php?action=listUser&status=UserDeleted" );
-				}
-			
 			function deleteCustomer() {
 
 				  if ( !$Customer = Customer::getById( (int)$_GET['CustomerId'] ) ) {
@@ -1372,33 +1158,6 @@ return($bytes);
 				}
 			
 
-				function listUser() {
-				  $results = array();
-				  
-				  if(!isset($_GET["pageno"]))
-				  {
-					 $_GET["pageno"] = 1;
-				  }
-				  
-				  
-				  $data = User::getListByIdCompany($_GET['pageno'], $_SESSION['companycode']);
-				  $results['User'] = $data['results'];
-				  $results['totalRows'] = $data['totalRows'];
-				  $results['pageTitle'] = "Main|All User|objname";
-
-				  if ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "User|objname Main|notfound";
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "User|objname Main|errorexist";
-				  }
-
-				  if ( isset( $_GET['status'] ) ) {
-					if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Main|notifysuccess";
-					if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "User|objname Main|Deleted";
-				  }
-
-				  require( TEMPLATE_PATH . "/Company/listUser.php" );
-				}
-			
 				function listRiders() {
 				  $results = array();
 				  
@@ -1535,34 +1294,6 @@ return($bytes);
 				}
 			
 
-				function searchUser() {
-				  $results = array();
-				  
-				  if(!isset($_GET["pageno"]))
-				  {
-					 $_GET["pageno"] = 1;
-				  }
-				  
-				  
-				  $data = User::getSearchByIdCompany($_GET['pageno'], $_SESSION['companycode'], $_GET['search']);
-				  $results['User'] = $data['results'];
-				  $results['totalRows'] = $data['totalRows'];
-				  $results['pageTitle'] = "Main|All User|objname";
-
-				  if ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "User|objname Main|notfound";
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "User|objname Main|errorexist";
-				  }
-
-				  if ( isset( $_GET['status'] ) ) {
-					if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Main|notifysuccess";
-					if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "User|objname Main|Deleted";
-				  }
-
-				  require( TEMPLATE_PATH . "/Company/listUser.php" );
-				}								
-				
-			
 				function searchRiders() {
 				  $results = array();
 				  
@@ -1704,33 +1435,6 @@ return($bytes);
 				
 			
 
-				function sortUser() {
-				  $results = array();
-				  
-				  if(!isset($_GET["pageno"]))
-				  {
-					 $_GET["pageno"] = 1;
-				  }
-				  
-				  
-				  $data = User::getSortByIdCompany($_GET['pageno'], $_SESSION['companycode'], $_GET['sort'], $_GET['order']);
-				  $results['User'] = $data['results'];
-				  $results['totalRows'] = $data['totalRows'];
-				  $results['pageTitle'] = "Main|All User|objname";
-
-				  if ( isset( $_GET['error'] ) ) {
-					if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "User|objname Main|notfound";
-					if ( $_GET['error'] == 'duplicate' ) $results['errorMessage'] = "User|objname Main|errorexist";
-				  }
-
-				  if ( isset( $_GET['status'] ) ) {
-					if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Main|notifysuccess";
-					if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "User|objname Main|Deleted";
-				  }
-
-				  require( TEMPLATE_PATH . "/Company/listUser.php" );
-				}
-				
 				function sortRiders() {
 				  $results = array();
 				  
@@ -1869,7 +1573,7 @@ return($bytes);
 
 				function signup() {
 					  // User has not posted the article edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();$data_Flag = Flag::getListall();
+					$data_Flag = Flag::getListall();
 					$results['Company'] = new Company;
 					  
 					  if ( isset( $_POST["saveChanges"] ) ) {
@@ -1957,7 +1661,7 @@ return($bytes);
 				  } else {
 					
 					// User has not posted the Company edit form yet: display the form
-					$data_Company = Company::getListall();$data_Flag = Flag::getListall();$data_Flag = Flag::getListall();
+					$data_Flag = Flag::getListall();
 					$results['Company'] = Company::getByCompanycode( $_SESSION['companycode'] );					
 					}
 					

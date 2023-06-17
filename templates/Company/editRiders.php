@@ -202,6 +202,8 @@
 						}
 				?>	
 				</select>
+					
+				<input type="hidden" id="rideraddedon" class="form-control" name="rideraddedon" value="<?php echo $results['Riders']->rideraddedon ?>"/>
 				
 						
 					<br>
