@@ -1,4 +1,3 @@
-
 <?php
 ob_start();
 require( "config.php" );
@@ -205,15 +204,15 @@ function login() {
 
       // Login failed: display an error message to the user
       $results['errorMessage'] = "Incorrect username or password. Please try again.";
-	  if(isset($_GET["error"]) && $_GET["error"] != "duplicate")
-		{
-			$results['errorMessage'] =  "User Already Registered With Us. You can Sign In.";
-		}
+	
       require( TEMPLATE_PATH . "/Company/Companylogin.php" );
 	 }
 
   } else {
-
+  if(isset($_GET["error"]) && $_GET["error"] != "duplicate")
+		{
+			$results['errorMessage'] =  "User Already Registered With Us. You can Sign In.";
+		}
     // User has not posted the login form yet: display the form
     require( TEMPLATE_PATH . "/Company/Companylogin.php" );
   }
