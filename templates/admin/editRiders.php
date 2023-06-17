@@ -216,7 +216,7 @@
 				?>	
 				</select>
 					
-				<input type="hidden" class="form-control" name="rideraddedon" id="rideraddedon" value="<?php echo $results['Riders']->rideraddedon ?>"/>
+				<input type="hidden" class="form-control" name="ridersaddedon" id="ridersaddedon" value="<?php echo $results['Riders']->ridersaddedon ?>"/>
 				
 						
 					<br>

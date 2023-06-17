@@ -101,8 +101,8 @@
 				<td><?php echo Flag::getByFlagvalue( $results["Riders"]->rider_block)->flagname; ?></td>
 				</tr>			
 					<tr>
-						<td><?php echo convertlang("Riders|rideraddedon"); ?></td> 
-						<td><?php echo htmlspecialchars( $results['Riders']->rideraddedon ); ?></td>
+						<td><?php echo convertlang("Riders|ridersaddedon"); ?></td> 
+						<td><?php echo htmlspecialchars( $results['Riders']->ridersaddedon ); ?></td>
 					</tr>	
 			
 	  </tbody>

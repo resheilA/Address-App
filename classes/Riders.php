@@ -45,7 +45,7 @@
 			
 		public $rider_block = null;			
 				
-		public $rideraddedon = null;			
+		public $ridersaddedon = null;			
 					
 			
 		 public function __construct( $data=array() ) {	
@@ -70,7 +70,7 @@
 		if ( isset( $data['password'] ) ) $this->password = $data['password'];
 			if ( isset( $data['flagname'] ) ) $this->flagname = $data['flagname'];
 		if ( isset( $data['rider_block'] ) ) $this->rider_block = $data['rider_block'];
-		if ( isset( $data['rideraddedon'] ) ) $this->rideraddedon = $data['rideraddedon'];	
+		if ( isset( $data['ridersaddedon'] ) ) $this->ridersaddedon = $data['ridersaddedon'];	
 		 }
 		
 		 public function storeFormValues ( $params ) {
@@ -80,7 +80,7 @@
 		
 		public function insert() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "INSERT INTO Riders ( id,ridername,rideraddress,ridercontactnumber,ridercompany,riderage,riderprofilepic,rideraadharcard,riderpancard,riderresidence,riderdra,riderpcc,bankaccno,bankifsc,riderbeneid,ridercode,password,rider_block,rideraddedon ) VALUES ( :id, :ridername, :rideraddress, :ridercontactnumber, :ridercompany, :riderage, :riderprofilepic, :rideraadharcard, :riderpancard, :riderresidence, :riderdra, :riderpcc, :bankaccno, :bankifsc, :riderbeneid, :ridercode, :password, :rider_block, :rideraddedon )";
+			$sql = "INSERT INTO Riders ( id,ridername,rideraddress,ridercontactnumber,ridercompany,riderage,riderprofilepic,rideraadharcard,riderpancard,riderresidence,riderdra,riderpcc,bankaccno,bankifsc,riderbeneid,ridercode,password,rider_block,ridersaddedon ) VALUES ( :id, :ridername, :rideraddress, :ridercontactnumber, :ridercompany, :riderage, :riderprofilepic, :rideraadharcard, :riderpancard, :riderresidence, :riderdra, :riderpcc, :bankaccno, :bankifsc, :riderbeneid, :ridercode, :password, :rider_block, :ridersaddedon )";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -101,7 +101,7 @@
 		$st->bindValue( "ridercode", $this->ridercode, PDO::PARAM_STR );
 		$st->bindValue( "password", $this->password, PDO::PARAM_STR );
 		$st->bindValue( "rider_block", $this->rider_block, PDO::PARAM_STR );
-		$st->bindValue( "rideraddedon", $this->rideraddedon, PDO::PARAM_STR );
+		$st->bindValue( "ridersaddedon", $this->ridersaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		  }
@@ -109,7 +109,7 @@
 		
 		public function update() {
 			$conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-			$sql = "UPDATE Riders SET id=:id, ridername=:ridername, rideraddress=:rideraddress, ridercontactnumber=:ridercontactnumber, ridercompany=:ridercompany, riderage=:riderage, riderprofilepic=:riderprofilepic, rideraadharcard=:rideraadharcard, riderpancard=:riderpancard, riderresidence=:riderresidence, riderdra=:riderdra, riderpcc=:riderpcc, bankaccno=:bankaccno, bankifsc=:bankifsc, riderbeneid=:riderbeneid, ridercode=:ridercode, password=:password, rider_block=:rider_block, rideraddedon=:rideraddedon WHERE id = :id";
+			$sql = "UPDATE Riders SET id=:id, ridername=:ridername, rideraddress=:rideraddress, ridercontactnumber=:ridercontactnumber, ridercompany=:ridercompany, riderage=:riderage, riderprofilepic=:riderprofilepic, rideraadharcard=:rideraadharcard, riderpancard=:riderpancard, riderresidence=:riderresidence, riderdra=:riderdra, riderpcc=:riderpcc, bankaccno=:bankaccno, bankifsc=:bankifsc, riderbeneid=:riderbeneid, ridercode=:ridercode, password=:password, rider_block=:rider_block, ridersaddedon=:ridersaddedon WHERE id = :id";
 			$st = $conn->prepare ( $sql );
 					
 		$st->bindValue( "id", $this->id, PDO::PARAM_STR );
@@ -130,7 +130,7 @@
 		$st->bindValue( "ridercode", $this->ridercode, PDO::PARAM_STR );
 		$st->bindValue( "password", $this->password, PDO::PARAM_STR );
 		$st->bindValue( "rider_block", $this->rider_block, PDO::PARAM_STR );
-		$st->bindValue( "rideraddedon", $this->rideraddedon, PDO::PARAM_STR );
+		$st->bindValue( "ridersaddedon", $this->ridersaddedon, PDO::PARAM_STR );
 			$st->execute();
 			$conn = null;
 		}

@@ -203,7 +203,7 @@
 				<?php $results['Riders']->rider_block = 1; ?>	
 				<input type="hidden" id="rider_block" class="form-control" name="rider_block" value="<?php echo $results['Riders']->rider_block ?>"/>
 					
-				<input type="hidden" id="rideraddedon" class="form-control" name="rideraddedon" value="<?php echo $results['Riders']->rideraddedon ?>"/>
+				<input type="hidden" id="ridersaddedon" class="form-control" name="ridersaddedon" value="<?php echo $results['Riders']->ridersaddedon ?>"/>
 				
 						
 					<br>

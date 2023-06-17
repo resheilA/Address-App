@@ -203,7 +203,7 @@
 				?>	
 				</select>
 					
-				<input type="hidden" id="rideraddedon" class="form-control" name="rideraddedon" value="<?php echo $results['Riders']->rideraddedon ?>"/>
+				<input type="hidden" id="ridersaddedon" class="form-control" name="ridersaddedon" value="<?php echo $results['Riders']->ridersaddedon ?>"/>
 				
 						
 					<br>
