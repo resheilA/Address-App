@@ -180,11 +180,7 @@ function dashboard() {
 	  $results['pageTitle'] = "Company|objname Main|dashboard";			
 	  if(isset($_GET["error"]) && $_GET["error"] != "duplicate")
 {
-	$results['errorMessage'] =  "
-	<div class="alert alert-info alert-dismissible fade show">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Info!</strong> User Already Registered With Us. You can Sign In.
-	</div>";
+	$results['errorMessage'] =  "User Already Registered With Us. You can Sign In.";
 }
 	 require( TEMPLATE_PATH . "/Company/Companydashboard.php" );
 }
