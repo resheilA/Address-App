@@ -18,6 +18,7 @@ if ( $action != "login" && $action != "signup" && $action != "logout" && !$usern
   exit;
 }
 
+
 include_once("external/modules/beforeload/beforeloading_Riders.php");
 
 switch ( $action ) {
@@ -101,7 +102,14 @@ function dashboard() {
 	
 	  $results = array();
 	  $results['pageTitle'] = "Riders|objname Main|dashboard";			
-	  
+	  if(isset($_GET["error"]) && $_GET["error"] != "duplicate")
+{
+	$results['errorMessage'] =  "
+	<div class="alert alert-info alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Info!</strong> User Already Registered With Us. You can Sign In.
+	</div>";
+}
 	 require( TEMPLATE_PATH . "/Riders/Ridersdashboard.php" );
 }
 
@@ -125,6 +133,10 @@ function login() {
 
       // Login failed: display an error message to the user
       $results['errorMessage'] = "Incorrect username or password. Please try again.";
+	  if(isset($_GET["error"]) && $_GET["error"] != "duplicate")
+		{
+			$results['errorMessage'] =  "User Already Registered With Us. You can Sign In.";
+		}
       require( TEMPLATE_PATH . "/Riders/Riderslogin.php" );
 	 }
 
