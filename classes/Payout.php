@@ -270,7 +270,7 @@
 						}
 						else
 						{
-							break();
+							break;
 						}
 						
                         imagejpeg($image, $target_file, 75);
